@@ -39,8 +39,8 @@ public class TextGravity : MonoBehaviour
 			TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
 			int vertexIndex = charInfo.vertexIndex;
 
-			//if (!charInfo.isVisible)
-			//	continue;
+			if (!charInfo.isVisible)
+				continue;
 
 			Vector2[] box = new Vector2[4];
 			box[0] = vertices[vertexIndex + 0];
@@ -49,7 +49,21 @@ public class TextGravity : MonoBehaviour
 			box[3] = vertices[vertexIndex + 3];
 
 			colliders[i].transform.position = (box[0] + box[1] + box[2] + box[3]) / 4;
+			colliders[i].transform.position += text.transform.position;
 			colliders[i].GetComponent<BoxCollider2D>().size = new Vector2(Mathf.Abs(box[1].x - box[2].x), Mathf.Abs(box[0].y - box[1].y));
+
+			colliders[i].name = "<" + charInfo.character + ">";
+			Debug.Log(i);
+			Debug.Log(charInfo.isVisible);
+			Debug.Log(charInfo.character);
+			Debug.Log(charInfo.vertexIndex);
+			Debug.Log(box[0]);
+			Debug.Log(box[1]);
+			Debug.Log(box[2]);
+			Debug.Log(box[3]);
+
+
+
 		}
 	}
 	void MakeCollider()
@@ -59,6 +73,12 @@ public class TextGravity : MonoBehaviour
 		colliders = new GameObject[characterCount];
 		for (int i = 0; i < characterCount; ++i)
 		{
+			TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
+			int vertexIndex = charInfo.vertexIndex;
+
+			if (!charInfo.isVisible)
+				continue;
+
 			colliders[i] = Instantiate(collider);
 			//colliders[i].SetActive(textInfo.characterInfo[i].isVisible);
 		}
@@ -79,6 +99,9 @@ public class TextGravity : MonoBehaviour
 			TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
 			int vertexIndex = charInfo.vertexIndex;
 
+			if (!charInfo.isVisible)
+				continue;
+
 			Vector2 size = colliders[i].GetComponent<BoxCollider2D>().size;
 
 			float[] x = new float[] { -size.x / 2, -size.x / 2, size.x / 2, size.x / 2 };
@@ -87,7 +110,7 @@ public class TextGravity : MonoBehaviour
 			for (int j = 0; j < 4; ++j)
 			{
 				Vector2 point = RotatePointAroundPivot(new Vector3(x[j], y[j]), Vector3.zero, colliders[i].transform.eulerAngles);
-				_newVertise[vertexIndex + j] = (Vector2)colliders[i].transform.position + point;
+				_newVertise[vertexIndex + j] = (Vector2)colliders[i].transform.position + point - (Vector2)text.transform.position;
 			}
 		}
 
