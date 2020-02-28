@@ -9,7 +9,7 @@ public class Quake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,power), Random.Range(-1f,power)));
+		GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-power,power), Random.Range(-1f,power)));
 		GetComponent<Rigidbody2D>().AddTorque( Random.Range(-torque, torque) );
 	}
 
