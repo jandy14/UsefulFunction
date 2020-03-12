@@ -58,7 +58,7 @@
 
 				if (frac(coord + _Time.y * _Move).x < 0.333)
 				{
-					mosaicColor = fixed4(frac(coord).x, 0, 0, 1);
+					mosaicColor = fixed4(mosaicColor.x, 0, 0, 1);
 				}
 				else if (frac(coord + _Time.y * _Move).x < 0.666)
 				{
