@@ -7,6 +7,7 @@
 		_Threshold("Threshold", Range(0,1)) = 0
 		_Edge("Edge", float) = 0.1
 		_Color("Color", Color) = (1,1,1,1)
+		_ChunkSize("ChunkSize", Range(0,10)) = 1
     }
     SubShader
     {
@@ -44,6 +45,7 @@
 			float _Threshold;
 			float _Edge;
 			float4 _Color;
+			float _ChunkSize;
 
             v2f vert (appdata v)
             {
@@ -57,7 +59,7 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-				fixed4 noise = tex2D(_Noise, i.uv);
+				fixed4 noise = tex2D(_Noise, i.uv * _ChunkSize);
 				if (noise.r > _Threshold)
 				{
 					col.a = 1;
