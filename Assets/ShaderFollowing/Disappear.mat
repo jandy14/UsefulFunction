@@ -61,6 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
+    - _ChunkSize: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -79,5 +80,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.6886792, g: 0.6191911, b: 0.10070309, a: 1}
+    - _Color: {r: 0.5539198, g: 2.0605814, b: 2.1159735, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

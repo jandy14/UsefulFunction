@@ -6,7 +6,7 @@
 		_Noise("Noise", 2D) = "whith" {}
 		_Threshold("Threshold", Range(0,1)) = 0
 		_Edge("Edge", float) = 0.1
-		_Color("Color", Color) = (1,1,1,1)
+		[HDR]_Color("Color", Color) = (1,1,1,1)
 		_ChunkSize("ChunkSize", Range(0,10)) = 1
     }
     SubShader
@@ -66,7 +66,7 @@
 				}
 				else if (noise.r > _Threshold - _Edge)
 				{
-					col = fixed4(0, 1, 1, 1);
+					col = _Color;
 				}
 				else
 				{
