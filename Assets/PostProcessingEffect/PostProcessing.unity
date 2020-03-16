@@ -130,6 +130,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1608858999}
   - component: {fileID: 1608859002}
+  - component: {fileID: 1608859004}
+  - component: {fileID: 1608859003}
   - component: {fileID: 1608858998}
   - component: {fileID: 1608858997}
   - component: {fileID: 1608859001}
@@ -290,12 +292,42 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608858996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77ce84be9f3025840b661fde0b5ddc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 0.39
+--- !u!114 &1608859003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608858996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65cf92f5cd13d7343b54d1b2c307437e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noise: 0.13
+  move: 20
+  waveFrequency: 200
+--- !u!114 &1608859004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608858996}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26c501b6ad4b76418f7d454f968bdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crackImg: {fileID: 2800000, guid: d67e974336fbe514ea953ba8a4d2aba7, type: 3}
+  threshold: 0
+  ratio: {x: 16, y: 9}
+  amount: 1
 --- !u!1 &1746934881
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,10 +504,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020361654}
-  m_LocalRotation: {x: -0.62133384, y: 0.22578806, z: 0.19352381, w: 0.7249225}
+  m_LocalRotation: {x: -0.6147997, y: 0.24894781, z: 0.21337412, w: 0.717299}
   m_LocalPosition: {x: -0.19449289, y: 0.95, z: -7.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 278.8, y: 394.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 278.8, y: 398.28, z: 0}
