@@ -42,7 +42,7 @@
         UNITY_INSTANCING_BUFFER_END(Props)
 		void vert(inout appdata_full v)
 		{
-			v.vertex.xz += v.normal.xz * _Amount * (sin(v.vertex.y * _Frequency +_Time.y * 10));
+			v.vertex.xz += v.normal.xz * _Amount * (sin(v.vertex.y * _Frequency +_Time.y * 10) * 0.5 + 0.5 );
 			//o.color = float4(v.vertex.y,0,0,1);
 			//o.uv_MainTex = 0;
 		}
