@@ -52,10 +52,11 @@
 
 			v = floor(v * 10);
 			float2 coord = floor(i.uv * _MainTex_TexelSize.zw);
-			float p = coord.x + coord.y;
+			float p = coord.x + coord.y * 3;
 			
-			v = step(p - mods[v] * floor(p / mods[v]), thresholds[v]);
-
+			v = step(p - mods[v] * floor(p / mods[v]), thresholds[v] - 0.1);
+			//int index = 7;
+			//v = step(p - mods[index] * floor(p / mods[index]), thresholds[index] - 0.1);
 
 			/*if (v < 0.1)
 			{
