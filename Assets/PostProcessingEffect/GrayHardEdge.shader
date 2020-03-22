@@ -44,16 +44,20 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
+				float mods[11] =		{ 10, 10, 5, 4, 5, 2, 5, 4, 5, 10 ,10};
+				float thresholds[11] =	{ 0, 1, 1, 1, 2, 1, 3, 3, 4, 9 , 10};
 				fixed4 col = tex2D(_MainTex, i.uv);
-			// just invert the colors
 
-			float v = col.r * 0.29 + col.g * 0.59 + col.b * 0.12;
+			float v = clamp(col.r * 0.29 + col.g * 0.59 + col.b * 0.12, 0, 1);
 
-			//v = floor(v * 10) * 0.1;
+			v = floor(v * 10);
 			float2 coord = floor(i.uv * _MainTex_TexelSize.zw);
 			float p = coord.x + coord.y;
 			
-			if (v < 0.1)
+			v = step(p - mods[v] * floor(p / mods[v]), thresholds[v]);
+
+
+			/*if (v < 0.1)
 			{
 				v = 0;
 			}
@@ -82,7 +86,7 @@
 			else
 			{
 				v = 1;
-			}
+			}*/
 
 			col = v;
 
