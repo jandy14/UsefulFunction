@@ -49,7 +49,7 @@
 
 			float v = col.r * 0.29 + col.g * 0.59 + col.b * 0.12;
 
-			v = floor(v * 10) * 0.1;
+			//v = floor(v * 10) * 0.1;
 			float2 coord = floor(i.uv * _MainTex_TexelSize.zw);
 			float p = coord.x + coord.y;
 			
