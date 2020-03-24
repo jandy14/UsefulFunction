@@ -22,6 +22,12 @@ public class TextShack : MonoBehaviour
     {
 		Debug.Log(text.textInfo.characterCount);
 		Debug.Log(text.textInfo.characterInfo);
+		Debug.Log(text.textInfo.linkInfo.Length);
+		for(int i = 0; i < text.textInfo.linkInfo.Length; ++i)
+		{
+
+			Debug.Log(text.textInfo.linkInfo[i]);
+		}
 	}
 
     // Update is called once per frame
