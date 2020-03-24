@@ -43,7 +43,8 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-				fixed4 col = fixed4(i.uv,0,0);
+				fixed4 col = tex2Dproj(_BackgroundTexture, i.grabPos );
+				col += 0.1;
 				col.a = 1;
                 return col;
             }
