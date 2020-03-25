@@ -6,6 +6,7 @@
     }
     SubShader
     {
+		//Blend SrcAlpha OneMinusSrcAlpha
         Tags { "RenderType"="Opaque" }
 		GrabPass{ "_BackgroundTexture" }
         Pass
@@ -31,21 +32,21 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			sampler2D _BackgroundTexture;
+			//float4 _ScreenParams;
 
             v2f vert (appdata v)
             {
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				o.grabPos = ComputeGrabScreenPos(o.vertex);
+				//o.grabPos = ComputeGrabScreenPos(o.vertex);
 				return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-				fixed4 col = tex2Dproj(_BackgroundTexture, i.grabPos );
-				col += 0.1;
-				col.a = 1;
+				fixed4 col;
+				col = i.vertex * float4(_ScreenParams.z - 1, _ScreenParams.w - 1, 1, 1);
                 return col;
             }
             ENDCG
