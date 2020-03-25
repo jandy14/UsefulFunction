@@ -1,19 +1,17 @@
-﻿Shader "Unlit/SolidShockWave"
+﻿Shader "Unlit/2DMirror"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Distance ("Distance", float) = 100
-		_Thickness ("Thickness", float) = 10
+		_Pivot ("Pivot", float) = 0
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-		GrabPass{ "_BgTexture" }
+		GrabPass{ "_BgTex" }
 
         Pass
         {
-			Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -34,9 +32,8 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-			sampler2D _BgTexture;
-			float _Distance;
-			float _Thickness;
+			sampler2D _BgTex;
+			float _Pivot;
 
             v2f vert (appdata v)
             {
@@ -48,28 +45,10 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-				fixed4 col = fixed4(1,1,1,1);
-				float2 center = float2(_ScreenParams.x * 0.5, _ScreenParams.y * 0.5);
-				float dist = distance(i.vertex.xy, center);
-				float2 move = normalize(i.vertex.xy - center) * 20;
-				float2 uv = (i.vertex + move) * float4(_ScreenParams.z - 1, _ScreenParams.w - 1, 1, 1);
-				col = tex2D(_BgTexture, uv);
-
-				//티 좀 나라고 적은 코드 +0.1
-				col += 0.1;
-
-				if (abs(_Distance - dist) < _Thickness)
-				{
-					col.a = 1;
-				}
-				else
-				{
-					col.a = 0;
-				}
-				
-
-
-				return col;
+				float2 vertex = float2(i.vertex.x + sin(i.uv.y * 10 + _Time.y) * 10, _Pivot - (i.vertex.y - _Pivot));
+				float2 uv = vertex * float4(_ScreenParams.z - 1, _ScreenParams.w - 1, 1, 1);
+				fixed4 col = tex2D(_BgTex, uv);
+                return col;
             }
             ENDCG
         }
