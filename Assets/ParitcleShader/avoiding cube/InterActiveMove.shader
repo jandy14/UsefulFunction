@@ -3,10 +3,11 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Color ("Color", Color) = (1,1,1,1)
-		[HDR]_Glowness ("Glowness", Color) = (1,1,1,1)
-		_Position ("Position", Vector) = (0,0,0,0)
-		_Range ("Range", float) = 1
+		_Color("Color", Color) = (1,1,1,1)
+		[HDR]_Glowness("Glowness", Color) = (1,1,1,1)
+		_Position("Position", Vector) = (0,0,0,0)
+		_Range("Range", float) = 1
+		_Volume("Volume", float) = 1
     }
     SubShader
     {
@@ -39,6 +40,7 @@
 			float4 _Glowness;
 			float4 _Position;
 			float _Range;
+			float _Volume;
 
             v2f vert (appdata v)
             {
@@ -52,8 +54,7 @@
 				{
 					move = sqrt(pow(_Range, 2) - pow(dist, 2));
 				}
-				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.vertex.y -= move;
+				o.vertex = UnityObjectToClipPos(v.vertex + float4(0,move * _Volume,0,0));
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.dist.x = move;
 
