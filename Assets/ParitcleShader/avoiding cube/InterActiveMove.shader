@@ -49,14 +49,24 @@
 				pivot = mul(unity_ObjectToWorld, float4(0, 0, 0, 1));
 				float dist = distance(_Position.xyz, pivot.xyz);
 				
-				float move = 0;
+				//float move = 0;
+				//if (dist < _Range)
+				//{
+				//	move = sqrt(pow(_Range, 2) - pow(dist, 2));
+				//}
+				//o.vertex = UnityObjectToClipPos(v.vertex + float4(0,move * _Volume,0,0));
+
+				float3 move = float3(0, 0, 0);
 				if (dist < _Range)
 				{
-					move = sqrt(pow(_Range, 2) - pow(dist, 2));
+					move = normalize(pivot.xyz - _Position.xyz + float3(0,1,0)) * (_Range - dist);
 				}
-				o.vertex = UnityObjectToClipPos(v.vertex + float4(0,move * _Volume,0,0));
+				o.vertex = UnityObjectToClipPos(v.vertex + float4(move.x, move.y, move.z, 0) * _Volume);
+
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				o.dist.x = move;
+				
+				//o.dist.x = move;
+				o.dist.x = distance(move, float3(0,0,0));
 
 
                 return o;
