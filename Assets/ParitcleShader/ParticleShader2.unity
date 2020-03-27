@@ -608,7 +608,7 @@ MonoBehaviour:
   obj: {fileID: 5698321872569691602, guid: 7411a8715dd74a84f9bd3e36c71dbbbb, type: 3}
   startPos: {x: -20, y: 1, z: -20}
   endPos: {x: 20, y: 1, z: 20}
-  dist: 1
+  dist: 0.5
 --- !u!4 &1703677282
 Transform:
   m_ObjectHideFlags: 0
