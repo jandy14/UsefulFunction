@@ -7,6 +7,7 @@
 		[HDR]_Glowness("Glowness", Color) = (1,1,1,1)
 		_Position("Position", Vector) = (0,0,0,0)
 		_Range("Range", float) = 1
+		_Volume("Volume", float) = 5
     }
     SubShader
     {
@@ -39,27 +40,29 @@
 			float4 _Glowness;
 			float4 _Position;
 			float _Range;
+			float _Volume;
 
             v2f vert (appdata v)
             {
                 v2f o;
 				float4 pivot = mul(unity_ObjectToWorld, float4(0, 0, 0, 1));
 				float dist = distance(_Position.xyz, pivot.xyz);
-				float4 move = float4(0, 0, 0, 0);
+				float2 move = float2(0,0);
 				if (dist < _Range)
 				{
-					move = normalize(pivot - _Position) * (_Range - dist);
+					move = normalize(pivot.xz - _Position.xz) * (_Range - dist);
 				}
 
-                o.vertex = UnityObjectToClipPos(v.vertex + move);
+                o.vertex = UnityObjectToClipPos(v.vertex + float4(move.x, 0, move.y, 0) * _Volume);
 				//o.vertex += move;
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				o.dist.x = distance(move, float2(0,0));
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-				fixed4 col = _Color;
+				fixed4 col = lerp(_Color, _Glowness, i.dist.x / _Range);
                 return col;
             }
             ENDCG
