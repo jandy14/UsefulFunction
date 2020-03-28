@@ -5,7 +5,7 @@
         _MainTex ("Texture", 2D) = "white" {}
 		_Color("Color", Color) = (1,1,1,1)
 		[HDR]_Glowness("Glowness", Color) = (1,1,1,1)
-		_Position("Position", Vector) = (0,0,0,0)
+		//_Position("Position", Vector) = (0,0,0,0)
 		_Range("Range", float) = 1
 		_Volume("Volume", float) = 1
     }

@@ -42,11 +42,12 @@ public class CreateObject : MonoBehaviour
 	void SetPosition()
 	{
 		Vector3 pos = player.transform.position;
-		for(int i = 0; i < particles.Length; ++i)
-		{
-			if(particles[i] != null)
-				particles[i].SetVector("_Position", pos);
-		}
+		Shader.SetGlobalVector("_Position", pos);
+		//for(int i = 0; i < particles.Length; ++i)
+		//{
+		//	if(particles[i] != null)
+		//		particles[i].SetVector("_Position", pos);
+		//}
 	}
 	void SetScriptPosition()
 	{

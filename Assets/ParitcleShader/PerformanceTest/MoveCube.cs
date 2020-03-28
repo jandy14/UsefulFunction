@@ -23,7 +23,7 @@ public class MoveCube : MonoBehaviour
 		if (dist < Range)
 		{
 			move = Vector3.Normalize(pivot - Position) * (Range - dist);
-			mat.SetColor("_Color", Color.Lerp(Color.white, Color.red, (Range - dist) / Range));
+			//mat.SetColor("_Color", Color.Lerp(Color.white, Color.red, (Range - dist) / Range));
 		}
 		else
 			dist = Range;
