@@ -52,11 +52,12 @@ public class CreateObject : MonoBehaviour
 	void SetScriptPosition()
 	{
 		Vector3 pos = player.transform.position;
-		for (int i = 0; i < moveCubes.Length; ++i)
-		{
-			if (moveCubes[i] != null)
-				moveCubes[i].Position = pos;
-		}
+		MoveCube.Position = pos;
+		//for (int i = 0; i < moveCubes.Length; ++i)
+		//{
+		//	if (moveCubes[i] != null)
+		//		moveCubes[i].Position = pos;
+		//}
 	}
     // Update is called once per frame
     void Update()

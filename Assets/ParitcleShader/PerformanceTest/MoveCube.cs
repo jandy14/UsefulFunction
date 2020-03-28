@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MoveCube : MonoBehaviour
 {
+	public static Vector3 Position;
 	
-	public Vector3 Position;
+	//public Vector3 Position;
 	public float Range = 5;
 
 	private Vector3 pivot;
