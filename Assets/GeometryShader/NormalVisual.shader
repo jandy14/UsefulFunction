@@ -53,7 +53,7 @@
 					return o;
 				}
 
-				[maxvertexcount(12)]
+				[maxvertexcount(12)] // this must be.
 				void geom(triangle v2g IN[3], inout TriangleStream<g2f> triStream)
 				{
 					g2f o;
