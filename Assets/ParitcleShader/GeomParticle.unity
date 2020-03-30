@@ -152,7 +152,7 @@ MonoBehaviour:
   player: {fileID: 619111743}
   startPos: {x: -20, y: 1, z: -20}
   endPos: {x: 20, y: 1, z: 20}
-  dist: 0.5
+  dist: 0.2
   mat: {fileID: 2100000, guid: 971e6038d40be8944b37370ecccfb36f, type: 2}
 --- !u!4 &395128612
 Transform:
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128a13d10aa50cc498733c697a606336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.03
 --- !u!23 &619111746
 MeshRenderer:
   m_ObjectHideFlags: 0
