@@ -46,7 +46,9 @@
 			float4 _Color;
 			float4 _Glowness;
 
-            v2g vert (appdata v)
+			float rand(float2 n) { return frac(sin(dot(n, float2(12.9898, 4.1414))) * 43758.5453); }
+            
+			v2g vert (appdata v)
             {
                 v2g o;
 
@@ -58,7 +60,7 @@
 					move = normalize(pivot.xyz - _Position.xyz + float3(0, 1, 0)) * (_Range - dist);
 				}
 
-                o.vertex = v.vertex + float4(move.x, move.y, move.z, 0);
+                o.vertex = v.vertex + float4(move.x, move.y, move.z, 0) + float4(sin(rand(v.vertex.xz) + _Time.y),0,cos(rand(v.vertex.zx) + _Time.y),0) * 0.1;
 				o.dist = dist;
                 return o;
             }

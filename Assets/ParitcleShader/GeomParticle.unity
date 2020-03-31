@@ -152,7 +152,7 @@ MonoBehaviour:
   player: {fileID: 619111743}
   startPos: {x: -20, y: 1, z: -20}
   endPos: {x: 20, y: 1, z: 20}
-  dist: 0.2
+  dist: 0.5
   mat: {fileID: 2100000, guid: 971e6038d40be8944b37370ecccfb36f, type: 2}
 --- !u!4 &395128612
 Transform:
