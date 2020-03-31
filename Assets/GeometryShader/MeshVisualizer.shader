@@ -1,4 +1,4 @@
-﻿Shader "Unlit/MeshVisualizer"
+﻿Shader "Unlit/MeshVisualizer"	
 {
     Properties
     {
@@ -8,12 +8,16 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" }
 
         Pass
         {
+			cull off
+			ZWrite Off
+			Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
+			#pragma geometry geom
             #pragma fragment frag
             #include "UnityCG.cginc"
 
@@ -29,7 +33,7 @@
             struct g2f
             {
                 float4 vertex : SV_POSITION;
-				float4 dist : TEXCOORD1;
+				float3 dist : TEXCOORD1;
             };
 
             sampler2D _MainTex;
@@ -56,18 +60,15 @@
 				float area = sqrt(s * (s - l0) * (s - l1) * (s - l2)) * 2;
 				
 				o.vertex = IN[0].vertex;
-				o.dist = float4(area / l0, 0, 0, 0);
-				//o.dist = area;
+				o.dist = float3(area/l0, 0, 0);
 				triStream.Append(o);
 				
 				o.vertex = IN[1].vertex;
-				o.dist = float4(0, area / l1, 0, 0);
-				//o.dist = area;
+				o.dist = float3(0, area/l1, 0);
 				triStream.Append(o);
 				
 				o.vertex = IN[2].vertex;
-				o.dist = float4(0, 0, area / l2, 0);
-				//o.dist = area;
+				o.dist = float3(0, 0, area/l2);
 				triStream.Append(o);
 				
 				triStream.RestartStrip();
@@ -75,10 +76,8 @@
 
             fixed4 frag (g2f i) : SV_Target
             {
-                // sample the texture
-				float dist = min(min(i.dist[0], i.dist[1]), i.dist[2]);
-				fixed4 col = _Color * dist;
-				//col = dist * 100000000;
+				float dist = min(min(i.dist.x, i.dist.y), i.dist.z);
+				fixed4 col = _Color * step(dist, _Thickness);
                 return col;
             }
             ENDCG
