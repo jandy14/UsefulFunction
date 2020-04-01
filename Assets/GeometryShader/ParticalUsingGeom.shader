@@ -60,7 +60,7 @@
 					move = normalize(pivot.xyz - _Position.xyz + float3(0, 1, 0)) * (_Range - dist);
 				}
 
-                o.vertex = v.vertex + float4(move.x, move.y, move.z, 0) + float4(sin(rand(v.vertex.xz) + _Time.y),0,cos(rand(v.vertex.zx) + _Time.y),0) * 0.1;
+                o.vertex = v.vertex + float4(move.x, move.y, move.z, 0) + float4(sin(rand(v.vertex.xz) + _Time.y), 0, cos(rand(v.vertex.zx) + _Time.y), 0) * (clamp(0,_Range,dist) / _Range) * 0.2;
 				o.dist = dist;
                 return o;
             }
