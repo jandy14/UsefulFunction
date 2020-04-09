@@ -12,6 +12,8 @@
 
         Pass
         {
+			Zwrite Off
+			Cull off
 			Blend SrcAlpha OneMinusSrcAlpha
 
             CGPROGRAM
@@ -51,9 +53,8 @@
             fixed4 frag (v2f i) : SV_Target
             {
 				fixed4 noise = tex2D(_MainTex, i.uv + _Time.x);
-				float result = step(i.rim, _Threshold + noise.x * _Noise);
+				float result = step(abs(i.rim), _Threshold + noise.x * _Noise);
 				fixed4 col = fixed4(1, 0, 0, 0.1 +result);
-
                 return col;
             }
             ENDCG
