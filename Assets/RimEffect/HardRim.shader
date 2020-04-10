@@ -34,6 +34,7 @@
 				float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
 				float rim : TEXCOORD1;
+				float4 worldPos : TEXCOORD2;
             };
 
             sampler2D _MainTex;
@@ -47,6 +48,7 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.rim = dot(v.normal, normalize(ObjSpaceViewDir(v.vertex)));
+				o.worldPos = mul(UNITY_MATRIX_M, v.vertex);
                 return o;
             }
 
@@ -54,7 +56,7 @@
             {
 				fixed4 noise = tex2D(_MainTex, i.uv + _Time.x);
 				float result = step(abs(i.rim), _Threshold + noise.x * _Noise);
-				fixed4 col = fixed4(1, 0, 0, 0.1 +result);
+				fixed4 col = fixed4(1, 0, 0, 0.1 + 0.1 * frac(i.worldPos.y * 10 + _Time.y) + result);
                 return col;
             }
             ENDCG
