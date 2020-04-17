@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 2800000, guid: a6fba46d60892224fb02e452dbd44f9b, type: 3}
-  threshold: -0.14
+  threshold: 0.34
 --- !u!1 &244557885
 GameObject:
   m_ObjectHideFlags: 0

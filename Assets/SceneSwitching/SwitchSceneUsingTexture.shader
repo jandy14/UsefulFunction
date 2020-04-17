@@ -46,7 +46,9 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-				col *= step(_Threshold, tex2D(_ThresholdTex, i.uv).r);
+				//col *= step(_Threshold, tex2D(_ThresholdTex, i.uv).r);
+				//col *= smoothstep(tex2D(_ThresholdTex, i.uv).r, _Threshold, _Threshold + 0.001);
+				col = lerp(fixed4(0, 0, 0, 1), col, clamp((tex2D(_ThresholdTex, i.uv).r - _Threshold) / 0.01,0,1));
 				return col;
             }
             ENDCG
