@@ -1,14 +1,13 @@
-﻿Shader "Hidden/CameraDepth"
+﻿Shader "Unlit/ColorByPos"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Distance ("Distance", float) = 0
     }
     SubShader
     {
-        // No culling or depth
-        //Cull Off ZWrite Off ZTest Always
+        Tags { "RenderType"="Opaque" }
+        LOD 100
 
         Pass
         {
@@ -30,28 +29,22 @@
                 float4 vertex : SV_POSITION;
             };
 
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
-			sampler2D _CameraDepthTexture;
-            sampler2D _MainTex;
-			float _Distance;
+
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_CameraDepthTexture, i.uv);
-				float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv));
-				//col = depth;
-				float linear01Depth = Linear01Depth(depth);
-				//col = col.r;
-				return linear01Depth;
-				return col;
-			//return col * 5;
-				return tex2D(_MainTex, i.uv) + step(abs(col.r - _Distance), 0.0005);
-				
+                // sample the texture
+				fixed4 col = i.vertex;
+                return col;
             }
             ENDCG
         }
