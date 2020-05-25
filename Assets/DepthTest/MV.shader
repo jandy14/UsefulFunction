@@ -50,6 +50,7 @@
 			{
 				// sample the texture
 				fixed4 col = i.pos;
+				col.b = -i.pos.b;
 			if (frac(i.pos.x) < 0.01 || frac(i.pos.x) > 0.99)
 			{
 				col = 1;

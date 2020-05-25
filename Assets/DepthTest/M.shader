@@ -1,4 +1,4 @@
-﻿Shader "Unlit/MVP"
+﻿Shader "Unlit/M"
 {
     Properties
     {
@@ -11,7 +11,6 @@
 
         Pass
         {
-			cull off
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -41,8 +40,8 @@
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.posc = UnityObjectToClipPos(v.vertex);
-				o.pos = mul(UNITY_MATRIX_MV, v.vertex);
-				o.posp = UnityObjectToClipPos(v.vertex);
+				o.pos = mul(UNITY_MATRIX_M, v.vertex);
+				o.posp = mul(UNITY_MATRIX_MV,v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				return o;
 			}
@@ -50,19 +49,20 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				// sample the texture
-				fixed4 col = i.posp;
-			if (frac(i.posp.x) < 0.01 || frac(i.posp.x) > 0.99)
+				fixed4 col = i.pos;
+			if (frac(i.pos.x) < 0.01 || frac(i.pos.x) > 0.99)
 			{
 				col = 1;
 			}
-			if (frac(i.posp.y) < 0.01 || frac(i.posp.y) > 0.99)
+			if (frac(i.pos.y) < 0.01 || frac(i.pos.y) > 0.99)
 			{
 				col = 1;
 			}
-			if (length(i.posp.xy) < 0.04)
+			if (length(i.pos.xy) < 0.04)
 			{
 				col = float4(0.1,0.5,0.9,1);
 			}
+
 				return col;
 			}
 			ENDCG
