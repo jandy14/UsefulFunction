@@ -50,17 +50,17 @@
 			{
 				// sample the texture
 				fixed4 col = i.posp;
-			if (length(i.posp.xy) < 0.02)
+			if (frac(i.posp.x) < 0.01 || frac(i.posp.x) > 0.99)
 			{
 				col = 1;
 			}
-			if (length(i.posp.x) < 0.01)
+			if (frac(i.posp.y) < 0.01 || frac(i.posp.y) > 0.99)
 			{
 				col = 1;
 			}
-			if (length(i.posp.y) < 0.01)
+			if (length(i.posp.xy) < 0.04)
 			{
-				col = 1;
+				col = float4(0.1,0.5,0.9,1);
 			}
 				return col;
 			}
