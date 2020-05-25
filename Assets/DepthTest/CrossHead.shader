@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Unlit/ColorByPos"
+﻿Shader "Hidden/CrossHead"
 {
     Properties
     {
@@ -8,8 +6,8 @@ Shader "Unlit/ColorByPos"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
+        // No culling or depth
+        Cull Off ZWrite Off ZTest Always
 
         Pass
         {
@@ -29,28 +27,30 @@ Shader "Unlit/ColorByPos"
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
-				float4 pos : TEXCOORD1;
-				float4 posp : TEXCOORD2;
             };
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-				o.pos = mul(UNITY_MATRIX_MV, v.vertex);
-				o.posp = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = v.uv;
                 return o;
             }
 
+            sampler2D _MainTex;
+
             fixed4 frag (v2f i) : SV_Target
             {
-                // sample the texture
-				fixed4 col = i.posp;
-                return col;
+                fixed4 col = tex2D(_MainTex, i.uv);
+				if (i.uv.x > 0.498 && i.uv.x < 0.502)
+				{
+					col = 1;
+				}
+				if (i.uv.y > 0.499 && i.uv.y < 0.501)
+				{
+					col = 1;
+				}
+			    return col;
             }
             ENDCG
         }
