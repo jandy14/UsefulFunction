@@ -30,6 +30,7 @@
 			UNITY_INITIALIZE_OUTPUT(Input, o);
 			#if defined(_FACES_X)
 				o.cubeUV = v.color.yz * 255;
+				o.cubeUV = TRANSFORM_TEX(o.cubeUV, _MainTex);
 				//o.cubeUV = v.vertex.yz;
 			#elif defined(_FACES_Y)
 				o.cubeUV = v.color.xz * 255;
