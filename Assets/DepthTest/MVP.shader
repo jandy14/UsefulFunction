@@ -50,6 +50,7 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				// sample the texture
+				i.posp = i.posp / i.posp.w;
 				fixed4 col = i.posp;
 			if (frac(i.posp.x) < 0.01 || frac(i.posp.x) > 0.99)
 			{
