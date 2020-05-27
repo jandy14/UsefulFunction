@@ -8,7 +8,7 @@
     SubShader
     {
         // No culling or depth
-        //Cull Off ZWrite Off ZTest Always
+        Cull Off ZWrite Off ZTest Always
 
         Pass
         {
@@ -42,15 +42,21 @@
 			float _Distance;
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_CameraDepthTexture, i.uv);
-				float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv));
+				float depth = tex2D(_CameraDepthTexture, i.uv).r;
+				depth = Linear01Depth(depth);
+				return depth;
+                //fixed4 col = tex2D(_CameraDepthTexture, i.uv);
+				//float depth = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
+				//depth = LinearEyeDepth(depth);
+				//depth = Linear01Depth(depth);
+				//return col;
 				//col = depth;
-				float linear01Depth = Linear01Depth(depth);
+				//float linear01Depth = Linear01Depth(depth);
 				//col = col.r;
-				return linear01Depth;
-				return col;
-			//return col * 5;
-				return tex2D(_MainTex, i.uv) + step(abs(col.r - _Distance), 0.0005);
+				//return linear01Depth;
+				//return col;
+				//return col * 5;
+				//return tex2D(_MainTex, i.uv) + step(abs(col.r - _Distance), 0.0005);
 				
             }
             ENDCG

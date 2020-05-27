@@ -12,6 +12,11 @@ public class CameraDepth : MonoBehaviour
 		material = new Material(Shader.Find("Hidden/CameraDepth"));
 	}
 
+	private void Start()
+	{
+		Camera cam = GetComponent<Camera>();
+		cam.depthTextureMode = cam.depthTextureMode | DepthTextureMode.Depth;
+	}
 	private void Update()
 	{
 		Distance += 0.001f;
