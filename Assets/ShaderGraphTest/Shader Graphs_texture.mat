@@ -7,8 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_HideSideDraw
-  m_Shader: {fileID: 4800000, guid: 7e919c98f4bda96458b133732d3e4a9c, type: 3}
+  m_Name: Shader Graphs_texture
+  m_Shader: {fileID: -6465566751694194690, guid: 1df229f076790164b9c9d411a197f31d,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,11 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
+    - Texture2D_B7339DB:
         m_Texture: {fileID: 2800000, guid: 85ac55597b97403c82fc6601a93cf241, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - _HideColor: {r: 0, g: 1, b: 0.46921825, a: 0.3137255}
-    - _MainColor: {r: 1, g: 0.6839622, b: 0.6839622, a: 1}
+    - Color_89EEF025: {r: 0.7979066, g: 1, b: 0.7971698, a: 0}
