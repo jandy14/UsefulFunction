@@ -31,6 +31,7 @@
 				float4 pos : TEXCOORD1;
 				float4 posp : TEXCOORD2;
 				float4 posc :  TEXCOORD3;
+				float2 depth : TEXCOORD4;
 			};
 
 			sampler2D _MainTex;
@@ -44,26 +45,34 @@
 				o.pos = mul(UNITY_MATRIX_MV, v.vertex);
 				o.posp = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				
 				return o;
 			}
 
+			// this is legacy...
+			//UNITY_TRANSFER_DEPTH(o.depth);
+			//UNITY_OUTPUT_DEPTH(i.depth)
+
 			fixed4 frag(v2f i) : SV_Target
 			{
-				// sample the texture
-				i.posp = i.vertex / float4(389,218.5,1,1);
+				//389 is x size of screen, 218.5 is y
+				//i.posp = i.vertex / float4(389,218.5,1,1);
+				i.posp = i.posp / i.posp.w;
+				//i.posp.b = i.posp.b > 0.5 ? 1 : 0;
+			
 				fixed4 col = i.posp;
-			if (frac(i.posp.x) < 0.01 || frac(i.posp.x) > 0.99)
-			{
-				col = 1;
-			}
-			if (frac(i.posp.y) < 0.01 || frac(i.posp.y) > 0.99)
-			{
-				col = 1;
-			}
-			if (length(i.posp.xy) < 0.04)
-			{
-				col = float4(0.1,0.5,0.9,1);
-			}
+				if (frac(i.posp.x) < 0.01 || frac(i.posp.x) > 0.99)
+				{
+					col = 1;
+				}
+				if (frac(i.posp.y) < 0.01 || frac(i.posp.y) > 0.99)
+				{
+					col = 1;
+				}
+				if (length(i.posp.xy) < 0.04)
+				{
+					col = float4(0.1,0.5,0.9,1);
+				}
 				return col;
 			}
 			ENDCG
