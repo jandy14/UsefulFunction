@@ -43,7 +43,7 @@
             fixed4 frag (v2f i) : SV_Target
             {
 				float depth = tex2D(_CameraDepthTexture, i.uv).r;
-				depth = Linear01Depth(depth);
+				//depth = Linear01Depth(depth);
 				return depth;
                 //fixed4 col = tex2D(_CameraDepthTexture, i.uv);
 				//float depth = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
