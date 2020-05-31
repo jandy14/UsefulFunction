@@ -56,8 +56,9 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				//389 is x size of screen, 218.5 is y
-				//i.posp = i.vertex / float4(389,218.5,1,1);
-				i.posp = i.posp / i.posp.w;
+				//i.posp = i.vertex / float4(401.5,226,1,1);
+				//i.posp = (i.posp / i.posp.w) * float4(0.5,-0.5,1,1) + float4(0.5,0.5,0,0);
+				
 				//i.posp.b = i.posp.b > 0.5 ? 1 : 0;
 			
 				fixed4 col = i.posp;
@@ -73,7 +74,7 @@
 				{
 					col = float4(0.1,0.5,0.9,1);
 				}
-				return col;
+				return i.posp;
 			}
 			ENDCG
         }
