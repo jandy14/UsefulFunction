@@ -44,7 +44,8 @@
             {
 				float depth = tex2D(_CameraDepthTexture, i.uv).r;
 				depth = LinearEyeDepth(depth);
-				return depth;
+				//depth = step(0.5, depth);
+				return frac(depth);
                 //fixed4 col = tex2D(_CameraDepthTexture, i.uv);
 				//float depth = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
 				//depth = LinearEyeDepth(depth);
