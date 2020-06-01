@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ForceField
-  m_Shader: {fileID: 4800000, guid: 000f5b1d48f1b28438fa4f819190ae4e, type: 3}
+  m_Name: Unlit_Scanner
+  m_Shader: {fileID: 4800000, guid: 6741260f3abeed04f9d43f94d33e08e7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,13 +18,8 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 85dd09ec1f3eb924b973dae8172b06bb, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Floats:
-    - _Interact: 0.3
-    - _Noise: 0.3
-    - _Threshold: 0.3
-    m_Colors: []
+    - _Diff: 0.2
+    m_Colors:
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
