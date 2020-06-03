@@ -53,7 +53,8 @@
             fixed4 frag (v2f i) : SV_Target
             {
 				fixed2 move = (fixed2(0.5,0.5) - i.uv) * (1 + _Data -distance(i.uv,fixed2(0.5,0.5)));
-				fixed4 col = tex2Dproj(_BgTex, i.grabPos + fixed4(move,0,0));
+				fixed4 col = tex2Dproj(_BgTex, i.grabPos + fixed4(move, 0, 0));
+				//fixed4 col = tex2D(_BgTex, (i.grabPos / i.grabPos.w).xy + move);
 				col += fixed4(0.3,0.1,0.1,1);
 				return col;
             }
