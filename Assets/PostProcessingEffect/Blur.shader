@@ -3,69 +3,114 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Amount ("Amount", float) = 0.1
+		_Amount ("Amount", float) = 2
+		_Dist ("Distance", float) = 0.01
     }
     SubShader
     {
         // No culling or depth
         Cull Off ZWrite Off ZTest Always
 
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+		//vertical
+		Pass
+		{
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
 
-            #include "UnityCG.cginc"
+			#include "UnityCG.cginc"
 
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
+			struct appdata
+			{
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+			};
 
-            struct v2f
-            {
-                float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
-            };
+			struct v2f
+			{
+				float2 uv : TEXCOORD0;
+				float4 vertex : SV_POSITION;
+			};
 
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                return o;
-            }
+			v2f vert(appdata v)
+			{
+				v2f o;
+				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.uv = v.uv;
+				return o;
+			}
 
-            sampler2D _MainTex;
+			sampler2D _MainTex;
 			float _Amount;
+			float _Dist;
 			float rand(float2 n) { return frac(sin(dot(n, float2(12.9898, 4.1414))) * 43758.5453); }
 
-            fixed4 frag (v2f i) : SV_Target
-            {
-				float noise = rand(i.uv) * 0.1 - 0.05;
-				fixed4 col[9];
-				col[0] = tex2D(_MainTex, i.uv + fixed2(-1, 1) * (_Amount ) );
-				col[1] = tex2D(_MainTex, i.uv + fixed2(0, 1) * (_Amount ) );
-				col[2] = tex2D(_MainTex, i.uv + fixed2(1, 1) * (_Amount ) );
-				col[3] = tex2D(_MainTex, i.uv + fixed2(1, 0) * (_Amount ) );
-				col[4] = tex2D(_MainTex, i.uv + fixed2(1, -1) * (_Amount ) );
-				col[5] = tex2D(_MainTex, i.uv + fixed2(0, -1) * (_Amount ) );
-				col[6] = tex2D(_MainTex, i.uv + fixed2(-1, -1) * (_Amount ) );
-				col[7] = tex2D(_MainTex, i.uv + fixed2(-1, 0) * (_Amount ) );
-				col[8] = tex2D(_MainTex, i.uv + fixed2(0, 0) * (_Amount ));
+			fixed4 frag(v2f i) : SV_Target
+			{
+				fixed4 col = 0;
+				float sum = 0;
 
-				fixed4 res = 0;
-				for (int i = 0; i < 8; ++i)
+				for (float index = -_Amount; index <= _Amount; ++index)
 				{
-					res += col[i];
+					float power = pow(2, -abs(index));
+					col += tex2D(_MainTex, i.uv + float2(0,_Dist * index)) * power;
+					sum += power;
 				}
-				res *= 0.125;
-				res = res * 0.5 + col[8] * 0.5;
-                return res;
-            }
-            ENDCG
-        }
+				col = col / sum;
+				return col;
+			}
+			ENDCG
+		}
+
+			//horizontal
+			Pass
+			{
+				CGPROGRAM
+				#pragma vertex vert
+				#pragma fragment frag
+
+				#include "UnityCG.cginc"
+
+				struct appdata
+				{
+					float4 vertex : POSITION;
+					float2 uv : TEXCOORD0;
+				};
+
+				struct v2f
+				{
+					float2 uv : TEXCOORD0;
+					float4 vertex : SV_POSITION;
+				};
+
+				v2f vert(appdata v)
+				{
+					v2f o;
+					o.vertex = UnityObjectToClipPos(v.vertex);
+					o.uv = v.uv;
+					return o;
+				}
+
+				sampler2D _MainTex;
+				float _Amount;
+				float _Dist;
+				float rand(float2 n) { return frac(sin(dot(n, float2(12.9898, 4.1414))) * 43758.5453); }
+
+				fixed4 frag(v2f i) : SV_Target
+				{
+					fixed4 col = 0;
+					float sum = 0;
+
+					for (float index = -_Amount; index <= _Amount; ++index)
+					{
+						float power = pow(2, -abs(index));
+						col += tex2D(_MainTex, i.uv + float2(_Dist * index, 0)) * power;
+						sum += power;
+					}
+					col = col / sum;
+					return col;
+				}
+				ENDCG
+			}
     }
 }

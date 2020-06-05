@@ -6,7 +6,8 @@ public class Blur : MonoBehaviour
 {
 	private Material material;
 
-	public float Amount;
+	public float Amount = 30f;
+	public float Dist = 0.05f;
 
 	void Awake()
 	{
@@ -15,6 +16,17 @@ public class Blur : MonoBehaviour
 	void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
 		material.SetFloat("_Amount", Amount);
-		Graphics.Blit(source, destination, material);
+		material.SetFloat("_Dist", Dist);
+
+		RenderTexture temp = RenderTexture.GetTemporary(source.width, source.height);
+		for(int i = 0; i < 4; ++i)
+		{
+			Graphics.Blit(source, temp, material, 0);
+			Graphics.Blit(temp, source, material, 1);
+		}
+		Graphics.Blit(source, temp, material, 0);
+		Graphics.Blit(temp, destination, material, 1);
+		RenderTexture.ReleaseTemporary(temp);
+		//temp.Release();
 	}
 }
