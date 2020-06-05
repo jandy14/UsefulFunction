@@ -54,7 +54,8 @@
 				fixed4 col1 = tex2D(_MadeImg, i.uv);
 				fixed4 col2 = tex2D(_BaseImg, i.uv);
 
-				return col + max(0, col2 - col1);
+				//return col1 - col2;
+				return col + max(0, col1 - col2);
             }
             ENDCG
         }
