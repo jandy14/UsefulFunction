@@ -53,8 +53,8 @@
 
 				fixed4 col1 = tex2D(_MadeImg, i.uv);
 				fixed4 col2 = tex2D(_BaseImg, i.uv);
-
-				//return col1 - col2;
+				//fixed4 glowColor = fixed4(col1.rgb,0);
+				return col + fixed4(1,1,0,1) * step(0.3,length(max(0, col1 - col2)));
 				return col + max(0, col1 - col2);
             }
             ENDCG

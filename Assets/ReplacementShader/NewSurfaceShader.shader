@@ -6,10 +6,11 @@
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+		_GlowColor ("GlowColor", Color) = (1,1,1,1)
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque" "Glowable"="True" }
         LOD 200
 
         CGPROGRAM

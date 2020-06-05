@@ -18,12 +18,13 @@ public class RenderingAndProcessing : MonoBehaviour
 		baseImg = new RenderTexture(Screen.width, Screen.height, 24);
 		madeImg = new RenderTexture(Screen.width, Screen.height, 0);
 		camera.targetTexture = baseImg;
-		camera.SetReplacementShader(baseShader, "");
+		camera.SetReplacementShader(baseShader, "Glowable");
 		Shader.SetGlobalTexture("_BaseImg", baseImg);
 		Shader.SetGlobalTexture("_MadeImg", madeImg);
 
 		mat = new Material(Shader.Find("Hidden/Blur"));
-		mat.SetFloat("_Amount", 0.005f);
+		mat.SetFloat("_Amount", 30f);
+		mat.SetFloat("_Dist", 0.002f);
 	}
 
 	private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -32,8 +33,8 @@ public class RenderingAndProcessing : MonoBehaviour
 
 		for (int i = 0; i < 4; ++i)
 		{
-			Graphics.Blit(source, madeImg, mat);
-			Graphics.Blit(madeImg, source, mat);
+			Graphics.Blit(source, madeImg, mat, 0);
+			Graphics.Blit(madeImg, source, mat, 1);
 		}
 		Graphics.Blit(source, madeImg, mat);
 	}
