@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1750859a967064791c31a535a8b53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loop: 4
   amount: 0.1
   baseShader: {fileID: 4800000, guid: eeb08961a16d2b445b3cd7f8425d29c9, type: 3}
 --- !u!20 &1730271274

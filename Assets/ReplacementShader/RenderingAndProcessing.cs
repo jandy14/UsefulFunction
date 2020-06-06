@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RenderingAndProcessing : MonoBehaviour
 {
+	[Range(0,10)]
+	public int loop = 1;
 	public float amount = 0.1f;
 	public Shader baseShader;
 
@@ -22,19 +24,19 @@ public class RenderingAndProcessing : MonoBehaviour
 		Shader.SetGlobalTexture("_BaseImg", baseImg);
 		Shader.SetGlobalTexture("_MadeImg", madeImg);
 
-		mat = new Material(Shader.Find("Hidden/Blur"));
-		mat.SetFloat("_Amount", 30f);
-		mat.SetFloat("_Dist", 0.002f);
+		mat = new Material(Shader.Find("Hidden/Extend"));
+		//mat.SetFloat("_Amount", 30f);
+		//mat.SetFloat("_Dist", 0.002f);
 	}
 
 	private void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
 		Graphics.Blit(source, destination);
 
-		for (int i = 0; i < 4; ++i)
+		for (int i = 0; i < loop; ++i)
 		{
-			Graphics.Blit(source, madeImg, mat, 0);
-			Graphics.Blit(madeImg, source, mat, 1);
+			Graphics.Blit(source, madeImg, mat);
+			Graphics.Blit(madeImg, source, mat);
 		}
 		Graphics.Blit(source, madeImg, mat);
 	}
