@@ -5,7 +5,8 @@ using UnityEngine;
 public class Blur : MonoBehaviour
 {
 	private Material material;
-
+	[Range(0,20)]
+	public int loop = 4;
 	public float Amount = 30f;
 	public float Dist = 0.05f;
 
@@ -19,7 +20,7 @@ public class Blur : MonoBehaviour
 		material.SetFloat("_Dist", Dist);
 
 		RenderTexture temp = RenderTexture.GetTemporary(source.width, source.height);
-		for(int i = 0; i < 4; ++i)
+		for(int i = 0; i < loop; ++i)
 		{
 			Graphics.Blit(source, temp, material, 0);
 			Graphics.Blit(temp, source, material, 1);
