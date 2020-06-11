@@ -635,7 +635,7 @@ MonoBehaviour:
       outWeight: 0.050416447
     - serializedVersion: 3
       time: 0.6
-      value: 0.15
+      value: 0.18
       inSlope: 0.012645006
       outSlope: 0.012645006
       tangentMode: 0
@@ -655,6 +655,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   mat: {fileID: 2100000, guid: 90a9bcd4e0d4c3942b79f4b8784cf8cb, type: 2}
+  MaxParticle: 1
 --- !u!54 &1578101457
 Rigidbody:
   m_ObjectHideFlags: 0

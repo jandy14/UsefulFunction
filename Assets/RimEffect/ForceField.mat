@@ -28,5 +28,5 @@ Material:
     - _Noise: 0.16
     - _Threshold: 0.12
     m_Colors:
-    - _HittedPos: {r: -0.60597974, g: 1.087461, b: -8.017683, a: 0}
+    - _HittedPos: {r: -0.35494328, g: 0.54522896, b: -8.2401905, a: 0}
     - _HitttedPos: {r: 0.66, g: 1.56, b: 2, a: 1}
