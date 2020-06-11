@@ -24,7 +24,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Interact: 0.3
-    - _Noise: 0.3
-    - _Threshold: 0.3
-    m_Colors: []
+    - _Interact: 0.25
+    - _Noise: 0.16
+    - _Threshold: 0.12
+    m_Colors:
+    - _HittedPos: {r: -0.60597974, g: 1.087461, b: -8.017683, a: 0}
+    - _HitttedPos: {r: 0.66, g: 1.56, b: 2, a: 1}

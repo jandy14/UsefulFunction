@@ -8,6 +8,7 @@ Shader "Unlit/ForceField"
 		_Threshold("Threshold", float) = 0.3
 		_Interact("Interact", float) = 0.1
 		_Noise("Noise", float) = 0.2
+		_HittedPos("Hitted World Postion", Vector) = (0,0,0,0)
 	}
 		SubShader
 		{
@@ -47,6 +48,7 @@ Shader "Unlit/ForceField"
 				float _Threshold;
 				float _Interact;
 				float _Noise;
+				float4 _HittedPos;
 
 				v2f vert(appdata v)
 				{
@@ -66,7 +68,8 @@ Shader "Unlit/ForceField"
 					float depth = tex2D(_CameraDepthTexture, i.clipPos.xy / i.clipPos.w * float4(0.5, -0.5, 1, 1) + float4(0.5, 0.5, 0, 0)).r;
 					float diff = i.clipPos.w - LinearEyeDepth(depth);
 					float inter = step(_Interact, abs(diff) + noise.x * _Noise) * -1 + 1;
-					fixed4 col = fixed4(1, 0, 0, saturate(0.1 + 0.1 * frac(i.worldPos.y * 10 + _Time.y) + rim + inter));
+					float hitted = step(length(i.worldPos.xyz - _HittedPos.xyz), _HittedPos.w);
+					fixed4 col = fixed4(1, 0, 0, saturate(0.1 + 0.1 * frac(i.worldPos.y * 10 + _Time.y) + rim + inter + hitted));
 					return col;
 				}
 				ENDCG
