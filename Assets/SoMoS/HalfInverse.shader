@@ -18,6 +18,7 @@
 
         Pass
         {
+			Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -65,7 +66,7 @@
 					_MainColor2 = _MainColor4;
 				}
 
-				float noise = (tex2D(_Noise, i.view + float2(_Time.x, 0)).r - 0.5) * 0.05;
+				float noise = (tex2D(_Noise, i.view.xy * float2(1,0.2)  + float2(_Time.x, 0)).r - 0.5) * 0.1;
 				noise *= ((_Invert - 0.5) * 2);
 				fixed4 col = lerp(_MainColor1, _MainColor2, step(noise, i.view.x * (_Invert - 0.5) * 2));
 
