@@ -5,6 +5,7 @@
         _MainTex ("Texture", 2D) = "white" {}
 		_ThresholdTex("ThresholdTex", 2D) = "white" {}
 		_Threshold("Threshold", float) = 0
+		[Toggle] _Invert("Invert?", Float) = 0
     }
     SubShader
     {
@@ -42,13 +43,21 @@
             sampler2D _MainTex;
 			sampler2D _ThresholdTex;
 			float _Threshold;
+			float _Invert;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 				//col *= step(_Threshold, tex2D(_ThresholdTex, i.uv).r);
 				//col *= smoothstep(tex2D(_ThresholdTex, i.uv).r, _Threshold, _Threshold + 0.001);
-				col = lerp(fixed4(0, 0, 0, 1), col, clamp((tex2D(_ThresholdTex, i.uv).r - _Threshold) / 0.01,0,1));
+				if (_Invert)
+				{
+					col = lerp(col, fixed4(0, 0, 0, 1), clamp((tex2D(_ThresholdTex, i.uv).r - _Threshold) / 0.01, 0, 1));
+				}
+				else
+				{
+					col = lerp(fixed4(0, 0, 0, 1), col, clamp((tex2D(_ThresholdTex, i.uv).r - _Threshold) / 0.01, 0, 1));
+				}
 				return col;
             }
             ENDCG
