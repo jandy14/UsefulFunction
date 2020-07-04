@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/SceneSwitching/SceneSwitching.unity
+    guid: 733516ce8359d2642a97a8cf9fbd4f6f
   m_configObjects: {}
