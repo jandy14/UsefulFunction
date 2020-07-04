@@ -18,15 +18,15 @@ public class TagManager
 		unfinishedTagInfo = new List<TagInfo>();
 	}
 
-	public void AddTag(string tag)
+	public void AddTag(string pTag)
 	{
-		if(!tags.Contains(tag))
-			tags.Add(tag);
+		if(!tags.Contains(pTag))
+			tags.Add(pTag);
 	}
-	public void RemoveTag(string tag)
+	public void RemoveTag(string pTag)
 	{
-		if (tags.Contains(tag))
-			tags.Remove(tag);
+		if (tags.Contains(pTag))
+			tags.Remove(pTag);
 	}
 	public string ExtractTag(string pText)
 	{
