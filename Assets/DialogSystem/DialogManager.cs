@@ -6,22 +6,32 @@ using TMPro;
 public class DialogManager : MonoBehaviour
 {
 	public TMP_Text dialogText;
+	public TagManager tagManger;
 
     void Start()
     {
+		tagManger = new TagManager();
+		tagManger.AddTag("hi");
+		tagManger.AddTag("i");
+		tagManger.AddTag("b");
+		dialogText.text = tagManger.ExtractTag(dialogText.text);
+		foreach(TagInfo tag in tagManger.tagInfos)
+		{
+			Debug.Log(string.Format("{0}:{1}:{2}:{3}", tag.tagName, tag.startIndex, tag.endIndex, tag.length));
+			foreach(KeyValuePair<string,string> v in tag.values)
+			{
+				Debug.Log(string.Format("{0}:{1}", v.Key,v.Value));
+			}
+		}
 		StartCoroutine(Progress());
     }
-
 
 	IEnumerator Progress()
 	{
 		dialogText.ForceMeshUpdate();
 		TMP_TextInfo textInfo = dialogText.textInfo;
 		int totalVisibleCharacters = textInfo.characterCount;
-		Debug.Log(textInfo.lineCount);
-		Debug.Log(textInfo.lineInfo[0].characterCount);
-		Debug.Log(textInfo.lineInfo[1].characterCount);
-		Debug.Log(textInfo.lineInfo[2].characterCount);
+		Debug.Log(dialogText.text);
 		Debug.Log(totalVisibleCharacters);
 		int visibleCount = 0;
 
