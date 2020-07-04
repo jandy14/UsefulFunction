@@ -12,17 +12,16 @@ public class DialogManager : MonoBehaviour
     {
 		tagManger = new TagManager();
 		tagManger.AddTag("hi");
-		tagManger.AddTag("i");
-		tagManger.AddTag("b");
 		dialogText.text = tagManger.ExtractTag(dialogText.text);
-		foreach(TagInfo tag in tagManger.tagInfos)
-		{
-			Debug.Log(string.Format("{0}:{1}:{2}:{3}", tag.tagName, tag.startIndex, tag.endIndex, tag.length));
-			foreach(KeyValuePair<string,string> v in tag.values)
-			{
-				Debug.Log(string.Format("{0}:{1}", v.Key,v.Value));
-			}
-		}
+		//tagmanager 값 확인용
+		//foreach(TagInfo tag in tagManger.tagInfos)
+		//{
+		//	Debug.Log(string.Format("{0}:{1}:{2}:{3}", tag.tagName, tag.startIndex, tag.endIndex, tag.length));
+		//	foreach(KeyValuePair<string,string> v in tag.values)
+		//	{
+		//		Debug.Log(string.Format("{0}:{1}", v.Key,v.Value));
+		//	}
+		//}
 		StartCoroutine(Progress());
     }
 

@@ -28,7 +28,6 @@ public class TagManager
 		if (tags.Contains(tag))
 			tags.Remove(tag);
 	}
-
 	public string ExtractTag(string pText)
 	{
 		Init();
@@ -64,7 +63,8 @@ public class TagManager
 		}
 		return pText;
 	}
-	public void Init()
+
+	private void Init()
 	{
 		tagInfos.Clear();
 		unfinishedTagInfo.Clear();
