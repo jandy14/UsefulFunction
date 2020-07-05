@@ -23,6 +23,13 @@ public class TagManager
 		if(!tags.Contains(pTag))
 			tags.Add(pTag);
 	}
+	public void AddTag(List<string> pTagList)
+	{
+		foreach(string tag in pTagList)
+		{
+			AddTag(tag);
+		}
+	}
 	public void RemoveTag(string pTag)
 	{
 		if (tags.Contains(pTag))

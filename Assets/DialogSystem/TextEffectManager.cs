@@ -11,6 +11,15 @@ public class TextEffectManager : MonoBehaviour
 
 	private bool isWorking = false;
 
+	public List<string> GetTagName()
+	{
+		List<string> names = new List<string>();
+		foreach(TextEffectSet set in textEffectSets)
+		{
+			names.Add(set.name);
+		}
+		return names;
+	}
 	public void StartAllEffect()
 	{
 		isWorking = true;
@@ -63,14 +72,19 @@ public class TextEffectManager : MonoBehaviour
 			t.textEffect.ResetEffect();
 		}
 	}
-	private void Work()
+	private void WorkEffect()
 	{
 		foreach(TextEffectSet t in textEffectSets)
 		{
 			t.textEffect.OneFrameWork();
 		}
 	}
-
+	private void WorkInFrame()
+	{
+		dialogText.ForceMeshUpdate();
+		WorkEffect();
+		dialogText.UpdateVertexData();
+	}
 	private void Awake()
 	{
 		InitEffect();
@@ -79,9 +93,7 @@ public class TextEffectManager : MonoBehaviour
 	{
 		if (isWorking)
 		{
-			dialogText.ForceMeshUpdate();
-			Work();
-			dialogText.UpdateVertexData();
+			WorkInFrame();
 		}
 	}
 }

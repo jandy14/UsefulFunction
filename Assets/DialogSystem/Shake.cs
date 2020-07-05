@@ -24,6 +24,7 @@ public class Shake : TextEffect
 	public override void ResetEffect()
 	{
 		base.ResetEffect();
+		shake = Vector3.zero;
 		timer = 0;
 	}
 	public override void OneFrameWork()

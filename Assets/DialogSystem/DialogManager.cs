@@ -12,19 +12,26 @@ public class DialogManager : MonoBehaviour
 	void Start()
     {
 		tagManager = new TagManager();
-		tagManager.AddTag("hi");
-		tagManager.AddTag("bye");
+		tagManager.AddTag(textEffectManager.GetTagName());
 		dialogText.text = tagManager.ExtractTag(dialogText.text);
 		textEffectManager.SetTagValue(tagManager.tagInfos);
 		textEffectManager.StartAllEffect();
 	}
+
+
 	public void SetText(string pRichText)
 	{
 		dialogText.text = tagManager.ExtractTag(pRichText);
 	}
+	private float timer = 0;
 	private void Update()
 	{
-
+		timer += Time.deltaTime;
+		if(timer > 4f)
+		{
+			//textEffectManager.StopAllEffect();
+			//textEffectManager.ResetAllEffect();
+		}
 	}
 	IEnumerator Progress()
 	{
