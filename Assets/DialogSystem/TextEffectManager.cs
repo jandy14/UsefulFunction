@@ -64,7 +64,16 @@ public class TextEffectManager : MonoBehaviour
 			}
 		}
 	}
-
+	public void SetTagValue(string pTagName, int pStart, int pEnd)
+	{
+		foreach (TextEffectSet effect in textEffectSets)
+		{
+			if(pTagName == effect.name)
+			{
+				effect.textEffect.AddIndex(pStart, pEnd);
+			}
+		}
+	}
 	private void InitEffect()
 	{
 		foreach (TextEffectSet t in textEffectSets)

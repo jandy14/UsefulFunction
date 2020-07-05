@@ -11,10 +11,12 @@ public class DialogManager : MonoBehaviour
 
 	void Start()
     {
+		dialogText.ForceMeshUpdate();
 		tagManager = new TagManager();
 		tagManager.AddTag(textEffectManager.GetTagName());
 		dialogText.text = tagManager.ExtractTag(dialogText.text);
 		textEffectManager.SetTagValue(tagManager.tagInfos);
+		textEffectManager.SetTagValue("reveal", 0, dialogText.textInfo.characterCount);
 		textEffectManager.StartAllEffect();
 	}
 
