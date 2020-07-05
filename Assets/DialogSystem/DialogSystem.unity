@@ -204,6 +204,9 @@ GameObject:
   m_Component:
   - component: {fileID: 994543934}
   - component: {fileID: 994543933}
+  - component: {fileID: 994543935}
+  - component: {fileID: 994543936}
+  - component: {fileID: 994543937}
   m_Layer: 0
   m_Name: DialogSystem
   m_TagString: Untagged
@@ -224,6 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 1950301855}
+  shake: {fileID: 994543935}
+  shake2: {fileID: 994543936}
 --- !u!4 &994543934
 Transform:
   m_ObjectHideFlags: 0
@@ -239,6 +244,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &994543935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994543932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fc91e8cbf0e6a42b9fd07fb175184d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1950301855}
+  indices: []
+--- !u!114 &994543936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994543932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fc91e8cbf0e6a42b9fd07fb175184d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1950301855}
+  indices: []
+--- !u!114 &994543937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994543932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471ba9f34210a334eb5a47ce8683965d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1950301855}
+  indices: []
+  speed: 0.1
 --- !u!1 &1278791863
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: d<hi power=34 hlskd=23>xtsd</hi>d fad<i>s df<b>a sld</i>k asd lfkja; asdflkj
-    o weoifjas w</b>reofivjs x,cmvnaklgj  sdf sd as sdf asdf asdf fas
+  m_text: dddddddddddddddddddddddddddddddddddd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -660,7 +707,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 88
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -684,12 +731,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1950301855}
-    characterCount: 128
+    characterCount: 36
     spriteCount: 0
-    spaceCount: 20
-    wordCount: 27
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 3
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
