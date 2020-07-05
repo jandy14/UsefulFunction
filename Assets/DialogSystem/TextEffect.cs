@@ -7,6 +7,8 @@ public abstract class TextEffect : MonoBehaviour
 {
 	public TMP_Text text;
 	public List<Vector2Int> indices;
+	public bool isWorking { get; protected set; }
+	protected Coroutine routine;
 
 	protected void Awake()
 	{
@@ -28,5 +30,9 @@ public abstract class TextEffect : MonoBehaviour
 	{
 		indices.Clear();
 	}
-	public abstract void Work();
+	public virtual void StartEffect() => isWorking = true;
+	public virtual void StopEffect() => isWorking = false;
+	public virtual void SkipToTheEnd() { }
+	public virtual void ResetEffect() => ResetIndices();
+	public abstract void OneFrameWork();
 }

@@ -6,31 +6,25 @@ using TMPro;
 public class DialogManager : MonoBehaviour
 {
 	public TMP_Text dialogText;
-	public TagManager tagManger;
-	public TextEffect shake;
-	public TextEffect shake2;
+	public TagManager tagManager;
+	public TextEffectManager textEffectManager;
 
 	void Start()
     {
-		tagManger = new TagManager();
-		tagManger.AddTag("hi");
-		dialogText.text = tagManger.ExtractTag(dialogText.text);
-		
-		StartCoroutine(Progress());
-		shake2.AddIndex(1, 2);
-		shake.AddIndex(0, 1);
+		tagManager = new TagManager();
+		tagManager.AddTag("hi");
+		tagManager.AddTag("bye");
+		dialogText.text = tagManager.ExtractTag(dialogText.text);
+		textEffectManager.SetTagValue(tagManager.tagInfos);
+		textEffectManager.StartAllEffect();
 	}
 	public void SetText(string pRichText)
 	{
-		dialogText.text = tagManger.ExtractTag(pRichText);
+		dialogText.text = tagManager.ExtractTag(pRichText);
 	}
 	private void Update()
 	{
-		dialogText.ForceMeshUpdate();
-		shake2.Work();
-		shake.Work();
 
-		//dialogText.UpdateVertexData();
 	}
 	IEnumerator Progress()
 	{
@@ -49,6 +43,7 @@ public class DialogManager : MonoBehaviour
 			if (visibleCount > totalVisibleCharacters)
 				break;
 			yield return null;
+			//yield return new WaitForSeconds(0.1f);
 		}
 		yield return null;
 	}
@@ -56,7 +51,7 @@ public class DialogManager : MonoBehaviour
 	//tagmanager 값 확인용
 	private void DebugTagManager()
 	{
-		foreach (TagInfo tag in tagManger.tagInfos)
+		foreach (TagInfo tag in tagManager.tagInfos)
 		{
 			Debug.Log(string.Format("{0}:{1}:{2}:{3}", tag.tagName, tag.startIndex, tag.endIndex, tag.length));
 			foreach (KeyValuePair<string, string> v in tag.values)
