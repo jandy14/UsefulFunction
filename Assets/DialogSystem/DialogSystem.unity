@@ -230,6 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogText: {fileID: 1950301855}
   textEffectManager: {fileID: 994543937}
+  defaultEffects:
+  - reveal
 --- !u!4 &994543934
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <hi>d</hi>d<bye>d</bye>dddddddddd<wave>dddddddddddddd<b>dddddd</wave></b>ddd
+  m_text: <hi>fffffffffff</hi>ddddddddd<bye>aaaaa</bye>ddddddd<wave>ddddd</wave>ddd<hi>ddd</hi>dd<wave>dd<b>dddddd</wave></b>ddd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -832,7 +834,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 89
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -856,12 +858,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1950301855}
-    characterCount: 69
+    characterCount: 111
     spriteCount: 0
     spaceCount: 0
-    wordCount: 13
+    wordCount: 21
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

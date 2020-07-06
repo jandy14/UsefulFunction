@@ -8,6 +8,7 @@ public class DialogManager : MonoBehaviour
 	public TMP_Text dialogText;
 	public TagManager tagManager;
 	public TextEffectManager textEffectManager;
+	public List<string> defaultEffects;
 
 	void Start()
     {
@@ -15,9 +16,8 @@ public class DialogManager : MonoBehaviour
 		dialogText.ForceMeshUpdate();
 		tagManager = new TagManager();
 		tagManager.AddTag(textEffectManager.GetTagName());
-		dialogText.text = tagManager.ExtractTag(dialogText.text);
-		textEffectManager.SetTagValue(tagManager.tagInfos);
-		textEffectManager.SetTagValue("reveal", 0, dialogText.textInfo.characterCount);
+
+		SetText(dialogText.text);
 		textEffectManager.StartAllEffect();
 	}
 
@@ -25,6 +25,11 @@ public class DialogManager : MonoBehaviour
 	public void SetText(string pRichText)
 	{
 		dialogText.text = tagManager.ExtractTag(pRichText);
+		textEffectManager.SetTagValue(tagManager.tagInfos);
+		foreach(string tag in defaultEffects)
+		{
+			textEffectManager.SetTagValue(tag, 0, dialogText.textInfo.characterCount);
+		}
 	}
 	private float timer = 0;
 	private void Update()

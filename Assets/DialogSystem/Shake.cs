@@ -46,7 +46,7 @@ public class Shake : TextEffect
 					continue;
 
 				//float shakeAmount = 3;
-				//Vector3 shake = new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);
+				Vector3 shake = new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);
 				vertices[vertexIndex + 0] = vertices[vertexIndex + 0] + shake;
 				vertices[vertexIndex + 1] = vertices[vertexIndex + 1] + shake;
 				vertices[vertexIndex + 2] = vertices[vertexIndex + 2] + shake;
