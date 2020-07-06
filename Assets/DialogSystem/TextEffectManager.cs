@@ -52,13 +52,13 @@ public class TextEffectManager : MonoBehaviour
 	}
 	public void SetTagValue(List<TagInfo> pTagInfos)
 	{
-		foreach(TagInfo info in pTagInfos)
+		foreach (TagInfo info in pTagInfos)
 		{
-			foreach(TextEffectSet effect in textEffectSets)
+			foreach (TextEffectSet effect in textEffectSets)
 			{
-				if(effect.name == info.tagName)
+				if (effect.name == info.tagName)
 				{
-					effect.textEffect.AddIndex(info.startIndex, info.endIndex);
+					effect.textEffect.AddInfo(info);
 					break;
 				}
 			}
@@ -68,13 +68,14 @@ public class TextEffectManager : MonoBehaviour
 	{
 		foreach (TextEffectSet effect in textEffectSets)
 		{
-			if(pTagName == effect.name)
+			if (effect.name == pTagName)
 			{
-				effect.textEffect.AddIndex(pStart, pEnd);
+				effect.textEffect.AddInfo(new TagInfo(pTagName, pStart, pEnd));
+				break;
 			}
 		}
 	}
-	private void InitEffect()
+	public void InitEffect()
 	{
 		foreach (TextEffectSet t in textEffectSets)
 		{
@@ -94,10 +95,7 @@ public class TextEffectManager : MonoBehaviour
 		WorkEffect();
 		dialogText.UpdateVertexData();
 	}
-	private void Awake()
-	{
-		InitEffect();
-	}
+
 	private void Update()
 	{
 		if (isWorking)

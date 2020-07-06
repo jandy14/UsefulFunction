@@ -11,6 +11,7 @@ public class DialogManager : MonoBehaviour
 
 	void Start()
     {
+		textEffectManager.InitEffect();
 		dialogText.ForceMeshUpdate();
 		tagManager = new TagManager();
 		tagManager.AddTag(textEffectManager.GetTagName());

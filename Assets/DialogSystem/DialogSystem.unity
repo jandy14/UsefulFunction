@@ -258,7 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1950301855}
-  indices: []
   time: 0.1
   shakeAmount: 3
 --- !u!114 &994543936
@@ -274,7 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1950301855}
-  indices: []
   time: 0.01
   shakeAmount: 30
 --- !u!114 &994543937
@@ -312,30 +310,92 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1950301855}
-  indices: []
   waveCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: -10
-      inSlope: 0.06400516
-      outSlope: 0.06400516
+      value: 0
+      inSlope: -159.39803
+      outSlope: -159.39803
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.13035144
+      outWeight: 0.26046687
     - serializedVersion: 3
-      time: 1
-      value: 10
+      time: 0.25
+      value: -30
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.83608735
+    - serializedVersion: 3
+      time: 0.5
+      value: -20
+      inSlope: -82.48138
+      outSlope: -82.48138
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.3284688
+    - serializedVersion: 3
+      time: 0.75
+      value: -10
+      inSlope: -85.06695
+      outSlope: -85.06695
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.25802666
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -55.930943
+      outSlope: -55.930943
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.25609794
+    - serializedVersion: 3
+      time: 1.25
+      value: 10
+      inSlope: -84.58965
+      outSlope: -84.58965
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.26934052
+    - serializedVersion: 3
+      time: 1.5
+      value: 20
+      inSlope: -62.881912
+      outSlope: -62.881912
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5235586
+    - serializedVersion: 3
+      time: 1.75
+      value: 30
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2
+      value: 0
+      inSlope: -163.5627
+      outSlope: -163.5627
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2750311
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 0
+    m_PostInfinity: 1
     m_RotationOrder: 4
   gap: 0.2
 --- !u!114 &994543939
@@ -351,7 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1950301855}
-  indices: []
   speed: 0.03
 --- !u!1 &1278791863
 GameObject:
@@ -728,7 +787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <hi>d</hi>d<bye>d</bye>dddddddddddddddddddddddd<b><wave>dddddd</wave></b>ddd
+  m_text: <hi>d</hi>d<bye>d</bye>dddddddddd<wave>dddddddddddddd<b>dddddd</wave></b>ddd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

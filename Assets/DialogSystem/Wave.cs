@@ -31,9 +31,9 @@ public class Wave : TextEffect
 	{
 		TMP_TextInfo textInfo = text.textInfo;
 		Vector3[] vertices;
-		foreach (Vector2Int index in indices)
+		foreach (TagInfo info in tagInfos)
 		{
-			for (int i = index.x; i < index.y; ++i)
+			for (int i = info.startIndex; i < info.endIndex; ++i)
 			{
 				TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
 				int materialIndex = charInfo.materialReferenceIndex;

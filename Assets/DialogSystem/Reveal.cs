@@ -18,10 +18,9 @@ public class Reveal : TextEffect
 	{
 		TMP_TextInfo textInfo = text.textInfo;
 		Color32[] newVertexColors;
-		foreach(Vector2Int index in indices)
+		foreach (TagInfo info in tagInfos)
 		{
-			Debug.Log(timer);
-			for (int i = index.x; i < index.y; ++i)
+			for (int i = info.startIndex; i < info.endIndex; ++i)
 			{
 				int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
 				newVertexColors = textInfo.meshInfo[materialIndex].colors32;

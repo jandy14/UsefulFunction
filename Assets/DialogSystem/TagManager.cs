@@ -154,4 +154,12 @@ public class TagInfo
 	public int startIndex = 0;
 	public int endIndex = 0;
 	public int length { get { return endIndex - startIndex; } }
+
+	public TagInfo() { }
+	public TagInfo(string pName, int pStart, int pEnd)
+	{
+		tagName = pName;
+		startIndex = pStart;
+		endIndex = pEnd;
+	}
 }

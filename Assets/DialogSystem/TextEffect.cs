@@ -6,33 +6,29 @@ using TMPro;
 public abstract class TextEffect : MonoBehaviour
 {
 	public TMP_Text text;
-	public List<Vector2Int> indices;
+	public List<TagInfo> tagInfos;
 	public bool isWorking { get; protected set; }
-	protected Coroutine routine;
 
 	protected void Awake()
 	{
-		indices = new List<Vector2Int>();
+		tagInfos = new List<TagInfo>();
 	}
-	public void AddIndex(int pStart, int pEnd)
+
+	public void AddInfo(TagInfo pTagInfo)
 	{
-		AddIndex(new Vector2Int(pStart, pEnd));
-	}
-	public void AddIndex(Vector2Int pIndex)
-	{
-		indices.Add(pIndex);
+		tagInfos.Add(pTagInfo);
 	}
 	public void SetText(TMP_Text pText)
 	{
 		text = pText;
 	}
-	public void ResetIndices()
+	public void ResetInfo()
 	{
-		indices.Clear();
+		tagInfos.Clear();
 	}
 	public virtual void StartEffect() => isWorking = true;
 	public virtual void StopEffect() => isWorking = false;
 	public virtual void SkipToTheEnd() { }
-	public virtual void ResetEffect() => ResetIndices();
+	public virtual void ResetEffect() => ResetInfo();
 	public abstract void OneFrameWork();
 }
