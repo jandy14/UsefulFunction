@@ -111,11 +111,11 @@ public class TagManager
 				tagInfo.tagName = v;
 				isValue = true;
 			}
+			string[] tagValue = v.Split('=');
+			if(tagValue.Length == 1)
+				tagValues.Add(tagValue[0], null);
 			else
-			{
-				string[] tagValue = v.Split('=');
 				tagValues.Add(tagValue[0], tagValue[1]);
-			}
 		}
 		tagInfo.startIndex = pStartIndex;
 		tagInfo.values = tagValues;
