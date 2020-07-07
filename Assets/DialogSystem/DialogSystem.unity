@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1950301855}
-  speed: 0.07
+  speed: 0.04
   animationSpeed: 0.1
   fadeInSpeed: 0.1
   animationDistance: 5

@@ -14,8 +14,27 @@ public class RevealWithAnimation : TextEffect
 
 	private void Update()
 	{
+		//Debug.Log(timer.ToString() + ":" + isWorking.ToString());
 		if (isWorking)
+		{
 			timer += Time.deltaTime;
+			if (timer > text.textInfo.characterCount * speed + Mathf.Max(animationSpeed, fadeInSpeed))
+			{
+				isFinished = true;
+				isWorking = false;
+			}
+		}
+	}
+	public override void ResetEffect()
+	{
+		base.ResetEffect();
+		isFinished = false;
+		timer = 0;
+	}
+	public override void SkipToTheEnd()
+	{
+		base.SkipToTheEnd();
+		timer = text.textInfo.characterCount * speed + animationSpeed + fadeInSpeed;
 	}
 	public override void OneFrameWork()
 	{

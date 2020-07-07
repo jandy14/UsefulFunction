@@ -9,16 +9,34 @@ public class TextEffectManager : MonoBehaviour
 	public TMP_Text dialogText;
 	public List<TextEffectSet> textEffectSets;
 
-	private bool isWorking = false;
+	private bool isWorking = true;
 
-	public List<string> GetTagName()
+	public string[] GetTagName()
 	{
-		List<string> names = new List<string>();
+		string[] names = new string[textEffectSets.Count];
+		int i = 0;
 		foreach(TextEffectSet set in textEffectSets)
 		{
-			names.Add(set.name);
+			names[i] = set.name;
+			++i;
 		}
 		return names;
+	}
+
+	public bool CheckAllFinished()
+	{
+		//bool isFinish = true;
+		//foreach (TextEffectSet t in textEffectSets)
+		//{
+		//	isFinish &= t.textEffect.isFinished;
+		//}
+		//return isFinish;
+		foreach (TextEffectSet t in textEffectSets)
+		{
+			if (!t.textEffect.isFinished)
+				return false;
+		}
+		return true;
 	}
 	public void StartAllEffect()
 	{
