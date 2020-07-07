@@ -23,6 +23,13 @@ public class TagManager
 		if(!tags.Contains(pTag))
 			tags.Add(pTag);
 	}
+	public void AddTag(string[] pTagArray)
+	{
+		for(int i = 0; i < pTagArray.Length; ++i)
+		{
+			tags.Add(pTagArray[i]);
+		}
+	}
 	public void AddTag(List<string> pTagList)
 	{
 		foreach(string tag in pTagList)
@@ -69,6 +76,17 @@ public class TagManager
 			}
 		}
 		return pText;
+	}
+	public void DebugTagManager()
+	{
+		foreach (TagInfo tag in tagInfos)
+		{
+			Debug.Log(string.Format("{0}:{1}:{2}:{3}", tag.tagName, tag.startIndex, tag.endIndex, tag.length));
+			foreach (KeyValuePair<string, string> v in tag.values)
+			{
+				Debug.Log(string.Format("{0}:{1}", v.Key, v.Value));
+			}
+		}
 	}
 
 	private void Init()
