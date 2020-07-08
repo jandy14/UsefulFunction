@@ -48,8 +48,6 @@ public class RevealWithAnimation : TextEffect
 			if(i < pTagInfo.endIndex)
 				stack++;
 		}
-		for (int i = 0; i < text.textInfo.characterCount; ++i)
-			Debug.Log(revealTime[i]);
 	}
 	public override void ResetEffect()
 	{

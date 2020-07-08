@@ -20,9 +20,9 @@ public class DialogManager : MonoBehaviour
 
 		//for debug
 		List<string> dialog = new List<string>();
-		//dialog.Add("today i'll gonna show you <bye>thiiiiiiiiis</bye>");
-		//dialog.Add("it can be also <wave>waaaaaaveeed</wave>.");
-		//dialog.Add("<bye>Important thing</bye> is it can be mixed <wave>in one sentance</wave>");
+		dialog.Add("today i'll gonna show you <bye>thiiiiiiiiis</bye>");
+		dialog.Add("it can be also <wave>waaaaaaveeed</wave>.");
+		dialog.Add("<bye>Important thing</bye> is it can be mixed <wave>in one sentance</wave>");
 		dialog.Add("<wave><bye>in one word</bye></wave>");
 		dialog.Add("you can make <grad>your own effect</grad><reveal=0.4>...</reveal><hi>WOW!!</hi>");
 		SetDialog(dialog);
