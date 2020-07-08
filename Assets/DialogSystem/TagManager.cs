@@ -96,7 +96,7 @@ public class TagManager
 	}
 	private string GetTagName(string pTag)
 	{
-		foreach (string s in pTag.Split(new char[] { '<', '/', '>', ' ' }))
+		foreach (string s in pTag.Split(new char[] { '<', '/', '>', ' ' , '='}))
 		{
 			if (s != "")
 			{
@@ -119,16 +119,13 @@ public class TagManager
 		}
 
 		//아니라면 unfinishedTagInfo 에 값넣기
-		bool isValue = false;
-		foreach(string v in values)
+		tagInfo.tagName = GetTagName(pTag);
+
+		foreach (string v in values)
 		{
 			if (v == "")
 				continue;
-			if(!isValue)
-			{
-				tagInfo.tagName = v;
-				isValue = true;
-			}
+
 			string[] tagValue = v.Split('=');
 			if(tagValue.Length == 1)
 				tagValues.Add(tagValue[0], null);

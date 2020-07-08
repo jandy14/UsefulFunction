@@ -17,15 +17,15 @@ public abstract class TextEffect : MonoBehaviour
 		isWorking = true;
 	}
 
-	public void AddInfo(TagInfo pTagInfo)
+	public virtual void AddInfo(TagInfo pTagInfo)
 	{
 		tagInfos.Add(pTagInfo);
 	}
-	public void SetText(TMP_Text pText)
+	public virtual void SetText(TMP_Text pText)
 	{
 		text = pText;
 	}
-	public void ResetInfo()
+	public virtual void ResetInfo()
 	{
 		tagInfos.Clear();
 	}

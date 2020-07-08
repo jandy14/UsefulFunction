@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 994543938}
   - component: {fileID: 994543939}
   - component: {fileID: 994543940}
+  - component: {fileID: 994543941}
   m_Layer: 0
   m_Name: DialogSystem
   m_TagString: Untagged
@@ -230,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 1950301855}
+  dialogList: []
   textEffectManager: {fileID: 994543937}
   defaultEffects:
   - reveal
@@ -300,6 +302,8 @@ MonoBehaviour:
     textEffect: {fileID: 994543938}
   - name: reveal
     textEffect: {fileID: 994543940}
+  - name: grad
+    textEffect: {fileID: 994543941}
 --- !u!114 &994543938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,87 +322,24 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: -159.39803
-      outSlope: -159.39803
+      value: -20
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.26046687
-    - serializedVersion: 3
-      time: 0.25
-      value: -30
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.83608735
-    - serializedVersion: 3
-      time: 0.5
-      value: -20
-      inSlope: -82.48138
-      outSlope: -82.48138
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.3284688
-    - serializedVersion: 3
-      time: 0.75
-      value: -10
-      inSlope: -85.06695
-      outSlope: -85.06695
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.25802666
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: -55.930943
-      outSlope: -55.930943
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.25609794
-    - serializedVersion: 3
-      time: 1.25
-      value: 10
-      inSlope: -84.58965
-      outSlope: -84.58965
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.26934052
-    - serializedVersion: 3
-      time: 1.5
       value: 20
-      inSlope: -62.881912
-      outSlope: -62.881912
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.5235586
-    - serializedVersion: 3
-      time: 1.75
-      value: 30
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 2
-      value: 0
-      inSlope: -163.5627
-      outSlope: -163.5627
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.2750311
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 1
+    m_PostInfinity: 0
     m_RotationOrder: 4
   gap: 0.2
 --- !u!114 &994543939
@@ -428,10 +369,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1950301855}
-  speed: 0.04
+  speed: 0.07
   animationSpeed: 0.1
   fadeInSpeed: 0.1
   animationDistance: 5
+--- !u!114 &994543941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994543932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4877bef458d074c4baf51d052737eee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1950301855}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0.5520115, b: 0, a: 1}
+    key2: {r: 1, g: 0.99149597, b: 0, a: 0}
+    key3: {r: 0.3235879, g: 1, b: 0, a: 0}
+    key4: {r: 0, g: 1, b: 0.89565754, a: 0}
+    key5: {r: 0, g: 0.46712375, b: 1, a: 0}
+    key6: {r: 0.54718304, g: 0, b: 1, a: 0}
+    key7: {r: 1, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 8192
+    ctime2: 16384
+    ctime3: 24576
+    ctime4: 32768
+    ctime5: 42598
+    ctime6: 51657
+    ctime7: 65535
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2
+  loopTime: 1
+  gap: 0.1
 --- !u!1 &1278791863
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class Shake : TextEffect
 		//text.ForceMeshUpdate();
 		TMP_TextInfo textInfo = text.textInfo;
 		Vector3[] vertices;
+
 		foreach (TagInfo info in tagInfos)
 		{
 			for (int i = info.startIndex; i < info.endIndex; ++i)

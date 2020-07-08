@@ -22,7 +22,6 @@ public class TextEffectManager : MonoBehaviour
 		}
 		return names;
 	}
-
 	public bool CheckAllFinished()
 	{
 		//bool isFinish = true;
@@ -100,6 +99,7 @@ public class TextEffectManager : MonoBehaviour
 			t.textEffect.ResetEffect();
 		}
 	}
+
 	private void WorkEffect()
 	{
 		foreach(TextEffectSet t in textEffectSets)

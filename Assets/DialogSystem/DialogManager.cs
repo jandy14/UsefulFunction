@@ -20,9 +20,11 @@ public class DialogManager : MonoBehaviour
 
 		//for debug
 		List<string> dialog = new List<string>();
-		dialog.Add("aaaaaaa<hi>aaaaaa</hi>aaaaaaaaaaaaaaaa");
-		dialog.Add("bbbbbbbbbbbb<wave>bbbbbbbbb</wave>bbbbbbbb");
-		dialog.Add("ccccc<bye>ccccccccccccccc</bye>ccccccccc");
+		//dialog.Add("today i'll gonna show you <bye>thiiiiiiiiis</bye>");
+		//dialog.Add("it can be also <wave>waaaaaaveeed</wave>.");
+		//dialog.Add("<bye>Important thing</bye> is it can be mixed <wave>in one sentance</wave>");
+		dialog.Add("<wave><bye>in one word</bye></wave>");
+		dialog.Add("you can make <grad>your own effect</grad><reveal=0.4>...</reveal><hi>WOW!!</hi>");
 		SetDialog(dialog);
 		NextDialog();
 	}
@@ -31,20 +33,17 @@ public class DialogManager : MonoBehaviour
 	{
 		dialogList = pDialog;
 	}
-	public void NextDialog()
+	public string NextDialog()
 	{
 		string text = "";
-		try
-		{
-			text = dialogList[0];
-		}
-		catch
-		{
-			return;
-		}
+
+		try { text = dialogList[0]; }
+		catch { return null; }
+
 		textEffectManager.ResetAllEffect();
 		SetText(text);
 		dialogList.RemoveAt(0);
+		return text;
 	}
 	public void SkipEffect()
 	{
@@ -53,8 +52,10 @@ public class DialogManager : MonoBehaviour
 	public void SetText(string pRichText)
 	{
 		dialogText.text = tagManager.ExtractTag(pRichText);
+		dialogText.ForceMeshUpdate();
 		textEffectManager.SetTagValue(tagManager.tagInfos);
 		ApplyDefaultEffect();
+		tagManager.DebugTagManager();
 	}
 	public void EventProcessing()
 	{
