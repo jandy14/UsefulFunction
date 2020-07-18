@@ -42,7 +42,7 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-				float mods[11] = { 10, 10, 5, 4, 5, 2, 5, 4, 5, 10 ,10};
+				float mods[11] =     { 10, 10, 5, 4, 5, 2, 5, 4, 5, 10, 10};
 				float thresholds[11] = { 0, 1, 1, 1, 2, 1, 3, 3, 4, 9 , 10};
                 fixed4 c = tex2D(_MainTex, i.uv);
                 
