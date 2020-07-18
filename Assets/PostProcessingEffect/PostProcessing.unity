@@ -699,6 +699,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1608858999}
+  - component: {fileID: 1608859015}
+  - component: {fileID: 1608859014}
   - component: {fileID: 1608859013}
   - component: {fileID: 1608859011}
   - component: {fileID: 1608859010}
@@ -811,7 +813,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608858996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -1025,6 +1027,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelSize: 1
+--- !u!114 &1608859014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608858996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea67997c1774fd468d64317ea3f9866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redPrecision: 3
+  greenPrecision: 1
+  bluePrecision: 1
+--- !u!114 &1608859015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608858996}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba775e8aa2216d44b94da1addfacacf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: {x: 16, y: 9}
 --- !u!1 &1663492924
 GameObject:
   m_ObjectHideFlags: 0
