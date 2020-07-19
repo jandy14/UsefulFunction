@@ -7,6 +7,7 @@ public class PixelEdgeFilter : MonoBehaviour
 	private Material material;
 
 	public Color BaseColor;
+	[ColorUsage(true, true)]
 	public Color EdgeColor;
 	public float Threshold;
 

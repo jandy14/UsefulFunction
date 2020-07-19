@@ -956,13 +956,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608858996}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83c1f70ace4b652498b92d2586de1b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BaseColor: {r: 0, g: 0, b: 0, a: 0}
-  EdgeColor: {r: 0.98929596, g: 1, b: 0, a: 1}
+  EdgeColor: {r: 0, g: 2, b: 0.05490196, a: 1}
   Threshold: 0.95
 --- !u!114 &1608859009
 MonoBehaviour:
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608858996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aea67997c1774fd468d64317ea3f9866, type: 3}
   m_Name: 
